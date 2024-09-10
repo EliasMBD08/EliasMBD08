@@ -1,0 +1,19 @@
+<div class="flex">
+  <div class="">
+    <span class="w-4 h-4 bg-cyan-400 block rounded-full mt-1"></span>
+    @if (lineVisible) {
+        <span class="w-[2px] h-full bg-cyan-400 block translate-x-[7px]"></span>
+    }
+  </div>
+  <div class="px-5">
+    <h3 class="font-semibold my-0 mb-1">
+      {{experience.title}}
+    </h3>
+    <span class="font-light text-sm"
+      >{{experience.subtitle}}</span
+    >
+    <p class="my-2 text-justify pb-4">
+        {{experience.desc}}
+    </p>
+  </div>
+</div>

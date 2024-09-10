@@ -1,0 +1,11 @@
+<section>
+  <app-section-title title="Projects" />
+  <div class="grid grid-flow-row gap-3">
+    @for (item of projects; track item.id ) {
+      <app-card-project [project]="item" />
+    } @empty {
+      <div>No se pudo cargar el projecto</div>
+    }
+  </div>
+</section>
+
