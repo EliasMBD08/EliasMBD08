@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { TimelineModule } from 'primeng/timeline';
 import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 import { ExperienceDetailComponent } from '../../shared/components/experience-detail/experience-detail.component';
+import { TooltipComponent } from '../../shared/components/tooltip/tooltip.component';
 
 @Component({
   selector: 'app-curriculum',
   standalone: true,
-  imports: [TimelineModule, SectionTitleComponent, ExperienceDetailComponent],
+  imports: [TimelineModule, SectionTitleComponent, ExperienceDetailComponent, TooltipComponent],
   templateUrl: './curriculum.component.html',
   styleUrl: './curriculum.component.scss'
 })
