@@ -1,0 +1,31 @@
+networks:
+  traefik-network:
+    external: true
+
+services:
+  portafolio-elias:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portafolio-elias
+    container_name: portafolio-elias
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-network
+
+      # HTTP (redirección a HTTPS)
+      - traefik.http.routers.portafolio-elias-http.rule=Host(`elias.bitnovastudios.com`) || Host(`www.elias.bitnovastudios.com`)
+      - traefik.http.routers.portafolio-elias-http.entrypoints=web
+      - traefik.http.routers.portafolio-elias-http.middlewares=redirect-to-https
+
+      # HTTPS
+      - traefik.http.routers.portafolio-elias.rule=Host(`elias.bitnovastudios.com`) || Host(`www.elias.bitnovastudios.com`)
+      - traefik.http.routers.portafolio-elias.entrypoints=websecure
+      - traefik.http.routers.portafolio-elias.tls=true
+      - traefik.http.routers.portafolio-elias.tls.certresolver=letsencrypt
+
+      # Puerto interno del contenedor
+      - traefik.http.services.portafolio-elias.loadbalancer.server.port=80
+    networks:
+      - traefik-network
