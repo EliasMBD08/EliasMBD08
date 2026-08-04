@@ -1,10 +1,82 @@
-<section>
-  <div class="flex flex-col gap-3">
-    <div class="text-lg">{{ resume().saludo }} 👋</div>
-    <div class="text-5xl font-bold">{{ resume().nombre }}</div>
-    <div class="text-3xl font-semibold">{{ resume().titulo }}</div>
-    <p class="my-1">
-      {{ resume().desc }}
+<section class="flex flex-col gap-8 pt-6 md:pt-12">
+  <div class="space-y-4">
+    <p class="font-mono text-sm text-brand">
+      {{ t().home.greeting }}
     </p>
+    <h1
+      class="text-5xl font-bold leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] text-ink md:text-6xl lg:text-7xl"
+    >
+      {{ t().home.name }}
+    </h1>
+    <h2
+      class="max-w-3xl text-xl font-medium leading-tight text-ink-muted md:text-2xl"
+    >
+      {{ t().home.role }}
+    </h2>
+  </div>
+
+  <p class="max-w-prose text-base leading-relaxed text-ink-muted md:text-lg">
+    {{ t().home.bio }}
+  </p>
+
+  <div class="flex flex-wrap items-center gap-3 pt-2">
+    <app-button variant="primary" size="lg" (click)="scrollTo('proyectos')">
+      {{ t().actions.viewProjects }}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </app-button>
+
+    <app-link-button
+      variant="outline"
+      size="lg"
+      [href]="profile.cvUrl"
+      [download]="true"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      {{ t().actions.downloadCV }}
+    </app-link-button>
+
+    <span
+      class="ml-2 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-ink-muted"
+    >
+      <span
+        class="relative inline-flex h-2 w-2"
+        aria-hidden="true"
+      >
+        <span
+          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+        ></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+      </span>
+      {{ t().home.availableForWork }}
+    </span>
   </div>
 </section>

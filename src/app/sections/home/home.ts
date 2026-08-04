@@ -1,14 +1,23 @@
-import { Component, computed, inject } from '@angular/core';
-import { ElegirIdioma } from '../../services/elegir-idioma';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { I18nService } from '../../i18n/i18n.service';
+import { profile } from '../../data/dataPortafolio';
+import { Button } from '../../shared/ui/button/button';
+import { LinkButton } from '../../shared/ui/link-button/link-button';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Button, LinkButton],
   templateUrl: './home.html',
-  styleUrl: './home.css',
 })
 export class Home {
-  private dataService = inject(ElegirIdioma);
+  protected i18n = inject(I18nService);
+  protected profile = profile;
 
-  resume = computed(() => this.dataService.datos()?.resume);
+  protected t = computed(() => this.i18n.t());
+
+  protected scrollTo(id: string): void {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

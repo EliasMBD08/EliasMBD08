@@ -1,17 +1,13 @@
-import { Component, computed, inject } from '@angular/core';
-import { ElegirIdioma } from '../../services/elegir-idioma';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Home } from '../../sections/home/home';
 import { Projects } from '../../sections/projects/projects';
 import { Curriculum } from '../../sections/curriculum/curriculum';
+import { Contact } from '../../sections/contact/contact';
 
 @Component({
   selector: 'app-body',
-  imports: [Home, Projects, Curriculum],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Home, Projects, Curriculum, Contact],
   templateUrl: './body.html',
-  styleUrl: './body.css',
 })
-export class Body {
-  private dataService = inject(ElegirIdioma);
-
-  sections = computed(() => this.dataService.datos().sidebar);
-}
+export class Body {}

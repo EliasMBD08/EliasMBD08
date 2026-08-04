@@ -1,24 +1,34 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { SidebarVisibilityService } from '../../services/sidebar-visibility';
-import { ElegirIdioma } from '../../services/elegir-idioma';
+import { I18nService } from '../../i18n/i18n.service';
+import { ThemeService } from '../../theme/theme.service';
 
 @Component({
   selector: 'app-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   templateUrl: './header.html',
-  styleUrl: './header.css',
 })
 export class Header {
-  private sidebarVisibilityService = inject(SidebarVisibilityService);
-  private dataService = inject(ElegirIdioma);
+  protected sidebar = inject(SidebarVisibilityService);
+  protected i18n = inject(I18nService);
+  protected theme = inject(ThemeService);
 
-  iconLanguage = computed(() => this.dataService.datos()?.iconLanguage);
+  protected t = computed(() => this.i18n.t());
 
-  doVisible() {
-    this.sidebarVisibilityService.visibility.set(true);
+  protected openDrawer(): void {
+    this.sidebar.visibility.set(true);
   }
 
-  toggleLanguage(code: number) {
-    this.dataService.cambiarIdioma(code);
+  protected toggleLang(): void {
+    this.i18n.toggle();
+  }
+
+  protected toggleTheme(): void {
+    this.theme.toggle();
+  }
+
+  protected nextLangLabel(): string {
+    return this.i18n.lang() === 'es' ? 'English' : 'Español';
   }
 }

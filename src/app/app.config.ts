@@ -1,30 +1,23 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
-import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
-import es from 'primelocale/es.json';
+import { provideRouter } from '@angular/router';
+import { withInMemoryScrolling } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideZonelessChangeDetection(),
+    provideRouter(
+      [],
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'top',
+      }),
+    ),
     provideClientHydration(withEventReplay()),
-    providePrimeNG({
-      theme: {
-        preset: Aura,
-        options: {
-          cssLayer: {
-            name: 'primeng',
-            order: 'theme, base, primeng',
-          },
-          darkModeSelector: 'none',
-        },
-      },
-      translation: es.es,
-    }),
   ],
 };

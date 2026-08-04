@@ -1,10 +1,17 @@
-<section>
-  <app-section-title [title]="projects().title" />
-  <div class="grid grid-flow-row gap-3">
-    @for (item of projects().items; track item.id) {
+<section class="flex flex-col gap-8">
+  <app-section-heading
+    [title]="t().projects.title"
+    [subtitle]="t().projects.subtitle"
+    [index]="'02'"
+  />
+
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+    @for (item of items; track item.id) {
       <app-card-project [project]="item" />
     } @empty {
-      <div>No se pudo cargar el projecto</div>
+      <p class="col-span-full rounded-lg border border-dashed border-line p-8 text-center text-ink-muted">
+        {{ t().projects.empty }}
+      </p>
     }
   </div>
 </section>

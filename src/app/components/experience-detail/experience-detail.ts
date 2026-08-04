@@ -1,14 +1,13 @@
-import { Component, input } from '@angular/core';
-import { Education } from '../../interfaces/education';
-import { Experience } from '../../interfaces/experience';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import type { ExperienceItem } from '../../data/experience.types';
 
 @Component({
   selector: 'app-experience-detail',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   templateUrl: './experience-detail.html',
-  styleUrl: './experience-detail.css',
 })
 export class ExperienceDetail {
-  experience = input.required<Education | Experience>();
+  experience = input.required<ExperienceItem>();
   lineVisible = input<boolean>(true);
 }

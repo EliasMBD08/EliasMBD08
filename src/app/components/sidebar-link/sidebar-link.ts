@@ -1,12 +1,11 @@
-import { Component, input } from '@angular/core';
-import { Section } from '../../interfaces/section';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   templateUrl: './sidebar-link.html',
-  styleUrl: './sidebar-link.css',
 })
 export class SidebarLink {
-  section = input.required<Section>();
+  item = input.required<{ title: string; linkto: string }>();
 }

@@ -1,16 +1,16 @@
-import { Component, computed, inject } from '@angular/core';
-import { ElegirIdioma } from '../../services/elegir-idioma';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { I18nService } from '../../i18n/i18n.service';
 import { SidebarLink } from '../sidebar-link/sidebar-link';
-import { ImageModule } from 'primeng/image';
+import { sidebarItems, profile } from '../../data/dataPortafolio';
 
 @Component({
   selector: 'app-sidebar-content',
-  imports: [SidebarLink, ImageModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [SidebarLink],
   templateUrl: './sidebar-content.html',
-  styleUrl: './sidebar-content.css',
 })
 export class SidebarContent {
-  private dataService = inject(ElegirIdioma);
-
-  sections = computed(() => this.dataService.datos()?.sidebar);
+  protected i18n = inject(I18nService);
+  protected items = sidebarItems;
+  protected profile = profile;
 }

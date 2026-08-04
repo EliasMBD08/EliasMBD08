@@ -1,8 +1,18 @@
-<app-header />
-<div class="flex">
-  <app-sidebar />
-  <div class="w-full">
-    <app-body />
-    <app-footer />
+<app-skip-link />
+
+<div class="flex min-h-screen flex-col bg-canvas">
+  <app-header />
+
+  <div class="flex flex-1">
+    <app-sidebar />
+
+    <main
+      id="main"
+      tabindex="-1"
+      class="flex-1 outline-none"
+    >
+      <app-body />
+      <app-footer />
+    </main>
   </div>
 </div>

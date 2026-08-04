@@ -1,31 +1,20 @@
 # Stage 1: Build
 FROM node:24-alpine AS builder
-
 WORKDIR /app
-
-# Copiar archivos de dependencias
 COPY package*.json ./
-
-# Instalar dependencias
 RUN npm ci
-
-# Copiar el resto del código
 COPY . .
-
-# Build de la aplicación para producción
 RUN npm run build
 
-# Stage 2: Servir con nginx
-FROM nginx:alpine
+# Stage 2: Run SSR
+FROM node:24-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=4000
 
-# Copiar archivos build desde el stage anterior
-COPY --from=builder /app/dist/portafolio/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/elias ./dist/elias
+COPY --from=builder /app/node_modules ./node_modules
+COPY package*.json ./
 
-# Copiar configuración personalizada de nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Exponer puerto 80
-EXPOSE 80
-
-# Comando para iniciar nginx
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 4000
+CMD ["node", "dist/elias/server/server.mjs"]

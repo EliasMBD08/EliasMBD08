@@ -26,6 +26,6 @@ services:
       - traefik.http.routers.portafolio-elias.tls.certresolver=letsencrypt
 
       # Puerto interno del contenedor
-      - traefik.http.services.portafolio-elias.loadbalancer.server.port=80
+      - traefik.http.services.portafolio-elias.loadbalancer.server.port=4000
     networks:
       - traefik-network

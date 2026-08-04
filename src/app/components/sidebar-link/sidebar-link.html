@@ -1,8 +1,10 @@
 <a
-  class="block w-full my-1 rounded-md cursor-pointer no-underline text-gray-300 hover:text-amber-500 hover:bg-slate-700"
-  [href]="'#' + section().linkto"
+  class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+  [href]="'#' + item().linkto"
 >
-  <div class="flex items-center py-3 px-5">
-    {{ section().title }}
-  </div>
+  <span
+    aria-hidden="true"
+    class="h-1.5 w-1.5 rounded-full bg-brand opacity-0 transition-opacity group-hover:opacity-100"
+  ></span>
+  <span>{{ item().title }}</span>
 </a>

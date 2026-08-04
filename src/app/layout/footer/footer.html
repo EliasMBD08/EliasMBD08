@@ -1,22 +1,21 @@
-<div class="w-full flex justify-center text-center text-gray-300">
-  <div class="max-w-[900px] pt-16 pb-4 px-8">
-    <div class="pb-2">&copy; 2024 Elias Marcos</div>
-    <div class="inline opacity-75">
-      <a
-        href="https://astrofy-template.netlify.app/"
-        target="_blank"
-        class="font-bold no-underline text-inherit"
-        >Astrofy Template</a
-      >
-      developed by
+<footer
+  class="mt-12 border-t border-line bg-canvas py-8 text-center text-sm text-ink-muted"
+>
+  <div class="mx-auto max-w-5xl px-5 md:px-8">
+    <p class="mb-1 text-ink">{{ copyright() }}</p>
+    <p class="text-xs text-ink-subtle">
+      {{ t().footer.builtWith }}
+    </p>
+    <!-- <p class="mt-2 text-xs text-ink-subtle">
+      {{ t().footer.template }} ·
       <a
         href="https://manuelernestog.github.io"
         target="_blank"
-        class="font-bold no-underline text-inherit"
-        >Manuel Ernesto ⚡️</a
+        rel="noopener noreferrer"
+        class="text-ink-muted underline-offset-4 transition-colors hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
       >
-      <br />
-      and upgraded by Elias Marcos
-    </div>
+        Manuel Ernesto
+      </a>
+    </p> -->
   </div>
-</div>
+</footer>

@@ -1,8 +1,16 @@
-<p-drawer [(visible)]="visibility" styleClass="bg-[#1D232A]">
-  <app-sidebar-content />
-</p-drawer>
-<div
-  class="hidden sticky top-0 md:inline-block justify-center h-screen pt-10 p-4 w-[300px] bg-[#181d24] z-10"
+<app-drawer
+  [open]="visibility()"
+  [title]="drawerTitle()"
+  (closed)="close()"
 >
   <app-sidebar-content />
-</div>
+</app-drawer>
+
+<aside
+  class="sticky top-(--header-h) hidden h-[calc(100vh-var(--header-h))] w-72 shrink-0 border-r border-line bg-surface md:block"
+  aria-label="Información del autor y navegación"
+>
+  <div class="h-full overflow-y-auto p-6">
+    <app-sidebar-content />
+  </div>
+</aside>
