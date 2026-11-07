@@ -1,3 +1,16 @@
+# Despliegue en Coolify (Docker Compose).
+#
+# Contrato con Coolify:
+#   - SIN `container_name`      -> Coolify gestiona el nombre del contenedor
+#   - SIN `networks: external`  -> Coolify crea la red y conecta el recurso
+#   - SIN `labels: traefik.*`   -> los genera Coolify ("Managed by Coolify"),
+#                                  con los entrypoints `http`/`https` de Traefik v3
+#   - Dominio y puerto se configuran en la UI:
+#     Domains -> elias.bitnovastudios.com -> Port 4000
+#
+# La imagen la publica GitHub Actions (.github/workflows/deploy.yml) en GHCR.
+# El deploy lo dispara el webhook DESPUÉS de publicar la imagen, por lo que
+# nunca hay carrera entre el build y el `docker compose pull` de Coolify.
 services:
   portafolio-elias:
     image: ghcr.io/eliasmbd08/portafolio-elias:latest
@@ -8,13 +21,12 @@ services:
     expose:
       - "4000"
 
-    # Healthcheck opcional: descomenta cuando tengas el endpoint de salud
-    # healthcheck:
-    #   test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/healthz"]
-    #   interval: 30s
-    #   timeout: 5s
-    #   retries: 3
-    #   start_period: 15s
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
 
     logging:
       driver: json-file

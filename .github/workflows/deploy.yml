@@ -1,4 +1,4 @@
-name: Build & Publish
+name: Build, Publish & Deploy
 
 on:
   push:
@@ -7,6 +7,12 @@ on:
 
 env:
   REGISTRY: ghcr.io
+
+# Un solo deploy a la vez por rama. No se cancela el que ya está en curso:
+# si el build falla, el webhook no se dispara y Coolify conserva la versión anterior.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -50,3 +56,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64
+
+      # El deploy se dispara SOLO cuando la imagen ya está en GHCR.
+      # Así Coolify nunca hace `docker compose pull` antes de tiempo (manifest unknown).
+      # Secret: COOLIFY_DEPLOY_WEBHOOK -> Deploy Webhook del recurso en Coolify.
+      - name: Trigger Coolify deploy
+        env:
+          COOLIFY_DEPLOY_WEBHOOK: ${{ secrets.COOLIFY_DEPLOY_WEBHOOK }}
+        run: |
+          curl -fsSL --retry 3 --retry-delay 5 --retry-connrefused \
+            -X POST "$COOLIFY_DEPLOY_WEBHOOK" -H "Accept: application/json"

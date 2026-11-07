@@ -43,6 +43,9 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
+            },
+            "security": {
+              "allowedHosts": ["elias.bitnovastudios.com", "localhost"]
             }
           },
           "configurations": {
