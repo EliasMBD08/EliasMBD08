@@ -1,31 +1,23 @@
-networks:
-  traefik-network:
-    external: true
-
 services:
   portafolio-elias:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: portafolio-elias
-    container_name: portafolio-elias
+    image: ghcr.io/eliasmbd08/portafolio-elias:latest
+    pull_policy: always
     restart: always
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-network
 
-      # HTTP (redirección a HTTPS)
-      - traefik.http.routers.portafolio-elias-http.rule=Host(`elias.bitnovastudios.com`) || Host(`www.elias.bitnovastudios.com`)
-      - traefik.http.routers.portafolio-elias-http.entrypoints=web
-      - traefik.http.routers.portafolio-elias-http.middlewares=redirect-to-https
+    # Puerto interno del contenedor (lo usa Coolify para enrutar el dominio)
+    expose:
+      - "4000"
 
-      # HTTPS
-      - traefik.http.routers.portafolio-elias.rule=Host(`elias.bitnovastudios.com`) || Host(`www.elias.bitnovastudios.com`)
-      - traefik.http.routers.portafolio-elias.entrypoints=websecure
-      - traefik.http.routers.portafolio-elias.tls=true
-      - traefik.http.routers.portafolio-elias.tls.certresolver=letsencrypt
+    # Healthcheck opcional: descomenta cuando tengas el endpoint de salud
+    # healthcheck:
+    #   test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/healthz"]
+    #   interval: 30s
+    #   timeout: 5s
+    #   retries: 3
+    #   start_period: 15s
 
-      # Puerto interno del contenedor
-      - traefik.http.services.portafolio-elias.loadbalancer.server.port=4000
-    networks:
-      - traefik-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
