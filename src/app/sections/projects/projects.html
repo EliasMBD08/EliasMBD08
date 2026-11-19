@@ -9,7 +9,9 @@
     @for (item of items; track item.id) {
       <app-card-project [project]="item" />
     } @empty {
-      <p class="col-span-full rounded-lg border border-dashed border-line p-8 text-center text-ink-muted">
+      <p
+        class="col-span-full rounded-lg border border-dashed border-line p-8 text-center text-ink-muted"
+      >
         {{ t().projects.empty }}
       </p>
     }

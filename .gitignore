@@ -38,6 +38,11 @@ testem.log
 /typings
 __screenshots__/
 
+# Coolify / deploy
+.env
+.env.local
+docker-compose.override.yml
+
 # System files
 .DS_Store
 Thumbs.db

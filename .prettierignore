@@ -1,0 +1,13 @@
+dist
+coverage
+.angular
+node_modules
+package-lock.json
+
+# Contenido estatico y archivos vendorizados (no son codigo del proyecto)
+public/files
+public/assets/external
+
+# Configuracion de IDE y del agente (fuera del alcance del gate de lint)
+.vscode
+.claude

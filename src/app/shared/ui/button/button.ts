@@ -1,14 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-} from '@angular/core';
-import {
-  type ButtonSize,
-  type ButtonVariant,
-  buttonClasses,
-} from './button-tokens';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { type ButtonSize, type ButtonVariant, buttonClasses } from './button-tokens';
 
 @Component({
   selector: 'app-button',

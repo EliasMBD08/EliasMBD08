@@ -15,16 +15,11 @@ export const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
     'bg-brand text-ink-inverse border-transparent hover:bg-brand-strong hover:shadow-glow focus-visible:ring-brand',
   outline:
     'bg-transparent text-brand border-brand hover:bg-brand-soft hover:text-brand-strong focus-visible:ring-brand',
-  ghost:
-    'bg-transparent text-ink border-transparent hover:bg-surface-2 focus-visible:ring-brand',
+  ghost: 'bg-transparent text-ink border-transparent hover:bg-surface-2 focus-visible:ring-brand',
   accent:
     'bg-accent text-ink-inverse border-transparent hover:bg-accent/90 focus-visible:ring-accent',
 };
 
 export function buttonClasses(variant: ButtonVariant, size: ButtonSize): string {
-  return [
-    BUTTON_BASE_CLASS,
-    BUTTON_SIZE_CLASSES[size],
-    BUTTON_VARIANT_CLASSES[variant],
-  ].join(' ');
+  return [BUTTON_BASE_CLASS, BUTTON_SIZE_CLASSES[size], BUTTON_VARIANT_CLASSES[variant]].join(' ');
 }

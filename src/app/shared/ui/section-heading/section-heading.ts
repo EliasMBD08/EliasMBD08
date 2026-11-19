@@ -10,9 +10,7 @@ export type HeadingLevel = 2 | 3;
       <h2
         class="group flex items-baseline gap-3 text-[var(--text-h1)] font-semibold leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)]"
       >
-        <span
-          aria-hidden="true"
-          class="text-brand font-mono text-base font-normal"
+        <span aria-hidden="true" class="text-brand font-mono text-base font-normal"
           >{{ index() }}.</span
         >
         <span class="text-ink">{{ title() }}</span>

@@ -6,15 +6,24 @@ dist
 coverage
 *.log
 npm-debug.log*
+*.tsbuildinfo
 
 # Git y CI
 .git
 .github
 .gitignore
 
+# Secretos y config local (el .env vive solo en el VPS)
+.env
+.env.*
+!.env.example
+.envrc
+docker-compose.override.yml
+
 # Editores y sistema
 .vscode
 .idea
 .claude
+.prettierignore
 .DS_Store
 Thumbs.db
