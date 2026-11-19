@@ -1,0 +1,36 @@
+<section class="flex flex-col gap-8">
+  <app-section-heading
+    [title]="t().aiMethod.title"
+    [subtitle]="t().aiMethod.subtitle"
+    [index]="'04'"
+  />
+
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+    @for (item of t().aiMethod.items; track item.title; let i = $index) {
+      <article
+        class="flex flex-col gap-3 rounded-xl border border-line bg-[var(--gradient-card)] from-surface to-surface/50 p-5 transition-colors hover:border-brand/40"
+      >
+        <span
+          aria-hidden="true"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-soft font-mono text-sm font-semibold text-brand"
+        >
+          {{ i + 1 }}
+        </span>
+
+        <h3 class="text-base font-semibold leading-snug text-ink">
+          {{ item.title }}
+        </h3>
+
+        <p class="text-sm leading-relaxed text-ink-muted">
+          {{ item.desc }}
+        </p>
+
+        <div class="mt-auto flex flex-wrap gap-1.5 pt-2">
+          @for (tool of item.tools; track tool) {
+            <app-tag>{{ tool }}</app-tag>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

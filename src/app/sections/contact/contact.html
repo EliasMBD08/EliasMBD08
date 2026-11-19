@@ -2,7 +2,7 @@
   <app-section-heading
     [title]="t().contact.title"
     [subtitle]="t().contact.subtitle"
-    [index]="'04'"
+    [index]="'05'"
   />
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -30,7 +30,9 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             }
@@ -86,7 +88,9 @@
           <span class="text-sm font-medium text-ink">
             {{ card.handle }}
           </span>
-          <span class="mt-1 inline-flex items-center gap-1 text-xs text-brand transition-transform group-hover:translate-x-0.5">
+          <span
+            class="mt-1 inline-flex items-center gap-1 text-xs text-brand transition-transform group-hover:translate-x-0.5"
+          >
             {{ card.cta }}
             <svg
               xmlns="http://www.w3.org/2000/svg"

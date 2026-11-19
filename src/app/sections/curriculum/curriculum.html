@@ -56,7 +56,9 @@
 
     <div class="space-y-5">
       <div>
-        <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">Frontend</h4>
+        <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">
+          {{ t().curriculum.skillsFrontend }}
+        </h4>
         <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
           @for (skill of frontendSkills; track skill.name) {
             <div
@@ -83,7 +85,7 @@
 
       <div>
         <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">
-          Backend &amp; Data
+          {{ t().curriculum.skillsBackend }}
         </h4>
         <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
           @for (skill of backendSkills; track skill.name) {
@@ -111,7 +113,35 @@
 
       <div>
         <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">
-          Tools &amp; Cloud
+          {{ t().curriculum.skillsData }}
+        </h4>
+        <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
+          @for (skill of dataSkills; track skill.name) {
+            <div
+              class="group flex flex-col items-center gap-2 rounded-lg border border-line bg-surface p-3 transition-all hover:-translate-y-0.5 hover:border-line-strong hover:shadow-soft"
+              [appTooltip]="skill.name"
+              appTooltipPosition="top"
+              tabindex="0"
+              [attr.aria-label]="skill.name"
+            >
+              <img
+                [src]="skill.iconUrl"
+                [alt]="''"
+                aria-hidden="true"
+                class="h-7 w-7 transition-transform group-hover:scale-110"
+                loading="lazy"
+              />
+              <span class="text-[10px] font-medium text-ink-muted">
+                {{ skill.name }}
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">
+          {{ t().curriculum.skillsTools }}
         </h4>
         <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
           @for (skill of toolsSkills; track skill.name) {
@@ -139,7 +169,9 @@
 
       @if (hasDesignSkills) {
         <div>
-          <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">Design</h4>
+          <h4 class="mb-3 font-mono text-xs uppercase tracking-wider text-ink-subtle">
+            {{ t().curriculum.skillsDesign }}
+          </h4>
           <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
             @for (skill of designSkills; track skill.name) {
               <div
@@ -164,6 +196,41 @@
           </div>
         </div>
       }
+    </div>
+  </article>
+
+  <article class="space-y-5">
+    <app-section-title [title]="t().curriculum.languages" />
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      @for (lang of t().curriculum.languageList; track lang.name) {
+        <div class="rounded-xl border border-line bg-surface p-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <p class="text-sm font-semibold text-ink">
+              {{ lang.name }}
+            </p>
+            <span
+              class="rounded-full border border-line bg-surface-2 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-brand"
+            >
+              {{ lang.level }}
+            </span>
+          </div>
+          <p class="mt-2 text-xs leading-relaxed text-ink-subtle">
+            {{ lang.note }}
+          </p>
+        </div>
+      }
+    </div>
+
+    <div class="space-y-3 pt-2">
+      <h4 class="font-mono text-xs uppercase tracking-wider text-ink-subtle">
+        {{ t().curriculum.softSkills }}
+      </h4>
+      <div class="flex flex-wrap gap-1.5">
+        @for (skill of t().curriculum.softSkillList; track skill) {
+          <app-tag>{{ skill }}</app-tag>
+        }
+      </div>
     </div>
   </article>
 </section>

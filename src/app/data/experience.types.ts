@@ -4,4 +4,6 @@ export interface ExperienceItem {
   company: string;
   duration?: string;
   desc?: string;
+  /** Tecnologías clave de la experiencia, mostradas como etiquetas. */
+  stack?: string[];
 }

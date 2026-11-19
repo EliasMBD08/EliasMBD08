@@ -5,6 +5,7 @@ import { SectionTitle } from '../../components/section-title/section-title';
 import { ExperienceDetail } from '../../components/experience-detail/experience-detail';
 import { TooltipDirective } from '../../shared/ui/tooltip.directive';
 import { LinkButton } from '../../shared/ui/link-button/link-button';
+import { Tag } from '../../shared/ui/tag/tag';
 import {
   educationExperiences,
   profile,
@@ -16,13 +17,7 @@ import {
 @Component({
   selector: 'app-curriculum',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    SectionHeading,
-    SectionTitle,
-    ExperienceDetail,
-    TooltipDirective,
-    LinkButton,
-  ],
+  imports: [SectionHeading, SectionTitle, ExperienceDetail, TooltipDirective, LinkButton, Tag],
   templateUrl: './curriculum.html',
 })
 export class Curriculum {
@@ -37,6 +32,7 @@ export class Curriculum {
 
   protected frontendSkills = skillsByCategory('frontend');
   protected backendSkills = skillsByCategory('backend');
+  protected dataSkills = skillsByCategory('data');
   protected toolsSkills = skillsByCategory('tools');
   protected designSkills = skillsByCategory('design');
 

@@ -2,14 +2,15 @@ import type { Translations } from './translations';
 
 export const es: Translations = {
   meta: {
-    title: 'Elias Marcos · Portfolio',
+    title: 'Elias Marcos · Portafolio',
     description:
-      'Elias Marcos — Ingeniero de sistemas y desarrollador de software. Portfolio full stack.',
+      'Elias Daniel Marcos Bernardo — Ingeniero de Datos y Full Stack. Python, BigQuery, GCP, SAP S/4HANA e IA generativa.',
   },
   nav: {
     home: 'Inicio',
     projects: 'Proyectos',
     curriculum: 'Currículum',
+    aiMethod: 'Metodología IA',
     contact: 'Contacto',
   },
   actions: {
@@ -28,10 +29,33 @@ export const es: Translations = {
   home: {
     greeting: 'Hola, soy',
     name: 'Elias Marcos',
-    role: 'Ingeniero de Sistemas y Desarrollador de Software Full Stack',
-    bio: 'Apasionado desarrollador web full stack y estudiante de ingeniería de sistemas en la Universidad Nacional Mayor de San Marcos. Combino formación académica sólida con experiencia práctica en el desarrollo de soluciones web innovadoras y eficientes. Competente en Django, Node.js, React y Angular, con trayectoria en automatización de procesos y RPA con Python.',
+    role: 'Ingeniero de Datos & Full Stack',
+    bio: 'Ingeniero de Datos y Desarrollador Full Stack con experiencia end-to-end en migraciones de datos hacia SAP S/4HANA, modelado en la nube y construcción de aplicaciones web. Especializado en Python, BigQuery, modelado en capas (Bronze/Silver), calidad de datos y automatización asistida por IA generativa. Egresado de Ingeniería de Sistemas (UNMSM) con impacto cuantificado: reducciones de hasta 60% en tiempos operativos.',
     availableForWork: 'Disponible para nuevos proyectos',
     scrollDown: 'Desplázate para conocer más',
+    highlightsTitle: 'Impacto medible',
+    highlights: [
+      {
+        value: '−60%',
+        label: 'Ciclo de selección',
+        desc: 'Screening masivo de CVs con la API de Gemini sobre el ERP de reclutamiento.',
+      },
+      {
+        value: '−40%',
+        label: 'Carga operativa manual',
+        desc: 'Reportería dinámica en Excel y módulo de postulantes sobre el ERP ISP.',
+      },
+      {
+        value: 'Silver',
+        label: 'Modelado en BigQuery',
+        desc: 'Capa Silver con DDL/DML, DAGs de carga y despliegue orquestado a QA.',
+      },
+      {
+        value: 'S/4HANA',
+        label: 'Migración SAP R/3 → ERP',
+        desc: 'Mapeo DE-PARA y homologación de campos entre fuentes heterogéneas.',
+      },
+    ],
   },
   projects: {
     title: 'Proyectos',
@@ -46,6 +70,53 @@ export const es: Translations = {
     education: 'Educación',
     skills: 'Habilidades',
     present: 'Actualidad',
+    languages: 'Idiomas',
+    softSkills: 'Aptitudes',
+    softSkillList: [
+      'Resolución de problemas',
+      'Pensamiento analítico',
+      'Comunicación efectiva',
+      'Trabajo en equipo',
+      'Orientado a resultados',
+    ],
+    languageList: [
+      {
+        name: 'Español',
+        level: 'Nativo',
+        note: 'Lengua de trabajo y documentación técnica.',
+      },
+      {
+        name: 'Inglés',
+        level: 'A2',
+        note: 'Lectura técnica de documentación y estándares.',
+      },
+    ],
+    skillsFrontend: 'Frontend',
+    skillsBackend: 'Backend',
+    skillsData: 'Data & SAP',
+    skillsTools: 'Tools & Cloud',
+    skillsDesign: 'Design',
+  },
+  aiMethod: {
+    title: 'Metodología con IA generativa',
+    subtitle: 'Cómo integro agentes de IA generativa en el ciclo de desarrollo de datos',
+    items: [
+      {
+        title: 'Desarrollo asistido por agentes',
+        desc: 'Generación y refactorización de código, análisis y optimización de consultas SQL, y elaboración de documentación técnica.',
+        tools: ['Claude Code', 'Codex', 'Minimax'],
+      },
+      {
+        title: 'Revisión humana antes de producción',
+        desc: 'Aceleración del análisis de esquemas de bases de datos y de la revisión de lógica de modelado, con validación y revisión humana del resultado antes de su paso a QA o a producción.',
+        tools: ['Validación humana', 'Pull requests'],
+      },
+      {
+        title: 'Control de calidad sobre el resultado',
+        desc: 'Versionado en Git, revisión mediante pull requests y validación de datos en los pipelines de calidad de la capa Silver.',
+        tools: ['Git', 'Code review', 'Data quality'],
+      },
+    ],
   },
   contact: {
     title: 'Contacto',

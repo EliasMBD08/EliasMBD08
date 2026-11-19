@@ -1,3 +1,21 @@
+export interface HighlightItem {
+  value: string;
+  label: string;
+  desc: string;
+}
+
+export interface AiMethodItem {
+  title: string;
+  desc: string;
+  tools: string[];
+}
+
+export interface LanguageItem {
+  name: string;
+  level: string;
+  note: string;
+}
+
 export interface Translations {
   meta: {
     title: string;
@@ -7,6 +25,7 @@ export interface Translations {
     home: string;
     projects: string;
     curriculum: string;
+    aiMethod: string;
     contact: string;
   };
   actions: {
@@ -29,6 +48,8 @@ export interface Translations {
     bio: string;
     availableForWork: string;
     scrollDown: string;
+    highlightsTitle: string;
+    highlights: HighlightItem[];
   };
   projects: {
     title: string;
@@ -43,6 +64,20 @@ export interface Translations {
     education: string;
     skills: string;
     present: string;
+    languages: string;
+    softSkills: string;
+    languageList: LanguageItem[];
+    softSkillList: string[];
+    skillsFrontend: string;
+    skillsBackend: string;
+    skillsData: string;
+    skillsTools: string;
+    skillsDesign: string;
+  };
+  aiMethod: {
+    title: string;
+    subtitle: string;
+    items: AiMethodItem[];
   };
   contact: {
     title: string;

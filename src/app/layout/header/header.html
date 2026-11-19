@@ -32,8 +32,7 @@
       href="#inicio"
       class="group inline-flex items-baseline gap-2 text-base font-semibold tracking-tight text-ink transition-colors hover:text-brand"
     >
-      <span
-        class="font-mono text-sm text-brand transition-transform group-hover:translate-x-0.5"
+      <span class="font-mono text-sm text-brand transition-transform group-hover:translate-x-0.5"
         >&lt;</span
       >
       <span>{{ t().home.name }}</span>
@@ -41,10 +40,7 @@
     </a>
   </div>
 
-  <nav
-    class="hidden items-center gap-1 md:flex"
-    aria-label="Navegación principal"
-  >
+  <nav class="hidden items-center gap-1 md:flex" aria-label="Navegación principal">
     <a
       href="#inicio"
       class="rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
@@ -59,6 +55,11 @@
       href="#curriculum"
       class="rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
       >{{ t().nav.curriculum }}</a
+    >
+    <a
+      href="#metodologia-ia"
+      class="rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      >{{ t().nav.aiMethod }}</a
     >
     <a
       href="#contacto"
@@ -88,7 +89,9 @@
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          ></path>
         </svg>
       } @else {
         <svg

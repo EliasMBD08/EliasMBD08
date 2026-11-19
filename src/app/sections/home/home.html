@@ -8,9 +8,7 @@
     >
       {{ t().home.name }}
     </h1>
-    <h2
-      class="max-w-3xl text-xl font-medium leading-tight text-ink-muted md:text-2xl"
-    >
+    <h2 class="max-w-3xl text-xl font-medium leading-tight text-ink-muted md:text-2xl">
       {{ t().home.role }}
     </h2>
   </div>
@@ -39,12 +37,7 @@
       </svg>
     </app-button>
 
-    <app-link-button
-      variant="outline"
-      size="lg"
-      [href]="profile.cvUrl"
-      [download]="true"
-    >
+    <app-link-button variant="outline" size="lg" [href]="profile.cvUrl" [download]="true">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -67,10 +60,7 @@
     <span
       class="ml-2 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-ink-muted"
     >
-      <span
-        class="relative inline-flex h-2 w-2"
-        aria-hidden="true"
-      >
+      <span class="relative inline-flex h-2 w-2" aria-hidden="true">
         <span
           class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
         ></span>
@@ -78,5 +68,29 @@
       </span>
       {{ t().home.availableForWork }}
     </span>
+  </div>
+
+  <div class="space-y-3 pt-4">
+    <h2 class="font-mono text-xs uppercase tracking-wider text-ink-subtle">
+      {{ t().home.highlightsTitle }}
+    </h2>
+
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+      @for (h of t().home.highlights; track h.value + h.label) {
+        <div
+          class="rounded-xl border border-line bg-[var(--gradient-card)] from-surface to-surface/50 p-4 transition-colors hover:border-brand/40"
+        >
+          <p class="font-mono text-2xl font-semibold text-brand md:text-3xl">
+            {{ h.value }}
+          </p>
+          <p class="mt-1 text-sm font-medium leading-snug text-ink">
+            {{ h.label }}
+          </p>
+          <p class="mt-1.5 text-xs leading-relaxed text-ink-subtle">
+            {{ h.desc }}
+          </p>
+        </div>
+      }
+    </div>
   </div>
 </section>
